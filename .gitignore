@@ -1,7 +1,6 @@
 ################ custum ################
 *.cmd
 .idea/*
-*.idea/*
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,pycharm,sublimetext,windows,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,pycharm,sublimetext,windows,macos
@@ -441,4 +440,3 @@ fabric.properties
 .idea/codestream.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij
-*.iml
