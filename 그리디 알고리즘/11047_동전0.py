@@ -1,3 +1,6 @@
+# 11047_동전 0
+# 그리디 알고리즘
+
 n,k = map(int, input().split())
 cnt = 0
 coin = []

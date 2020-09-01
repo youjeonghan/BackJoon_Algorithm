@@ -1,3 +1,6 @@
+# 11399_ATM
+# 그리디 알고리즘
+
 n = int(input())
 time_list = list(map(int, input().split()))
 time_list.sort()
