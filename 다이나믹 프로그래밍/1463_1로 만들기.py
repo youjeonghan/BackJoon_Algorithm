@@ -25,6 +25,7 @@
 #
 # dynamic(x, cnt, array)
 # print(array[1])
+
 import math
 
 x = int(input())
