@@ -5,7 +5,6 @@ open_cnt = 0
 close_cnt = 0
 
 for i in range(0,cmd):
-    arr = []
     arr = list(input())
     for j in range(0,len(arr)):
         if arr[j] == "(":
