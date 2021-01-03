@@ -7,9 +7,9 @@ cnt = 0
 five_num = n // 5
 
 for i in range(five_num, 0, -1):
-    if (n - (5*i))%3 == 0 :
+    if (n - (5 * i)) % 3 == 0:
         cnt = cnt + i
-        n = n - (5*i)
+        n = n - (5 * i)
         break
 
 if n % 3 == 0:

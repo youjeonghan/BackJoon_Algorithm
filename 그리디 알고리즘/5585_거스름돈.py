@@ -15,6 +15,7 @@ money = money % 100
 cnt = cnt + money // 50
 money = money % 50
 
+
 cnt = cnt + money // 10
 money = money % 10
 
