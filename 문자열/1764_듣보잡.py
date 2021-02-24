@@ -11,11 +11,8 @@ for _ in range(N):
 
 for _ in range(M):
     check = stdin.readline().rsplit()[0]
-    try:
-        if listen[check] == 1:
-            result.append(check)
-    except KeyError:
-        pass
+    if listen.get(check) == 1:
+        result.append(check)
 
 result.sort()
 print(len(result))
