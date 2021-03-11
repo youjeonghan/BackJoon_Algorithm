@@ -1,4 +1,5 @@
 # 골드 5레벨        최단경로
+# 다익스트라 알고리즘
 import heapq as hq
 from collections import deque, defaultdict
 from sys import stdin, maxsize

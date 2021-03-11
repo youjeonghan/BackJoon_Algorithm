@@ -1,5 +1,5 @@
 # 골드 4레벨        트리의 지름
-from sys import stdin, maxsize
+from sys import stdin
 from collections import deque
 
 read = stdin.readline
