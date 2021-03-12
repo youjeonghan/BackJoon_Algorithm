@@ -1,49 +1,27 @@
-# 골드 4레벨        웜홀
-# 벨만 포드 알고리즘
+import sys
 
-from sys import stdin, maxsize
-from collections import defaultdict
-
-# maxsize = 2147483647
-read = stdin.readline
-t = int(read())
+input = sys.stdin.readline
+sys.setrecursionlimit(10 ** 9)
 
 
-def bellman(graph):
-    vertex = defaultdict(lambda: maxsize)
-    # vertex = [maxsize for _ in range(N + 1)]
-    for i in range(N - 1):
-        for s in graph:
-            for e in graph[s]:
-                if vertex[e] > vertex[s] + graph[s][e]:
-                    vertex[e] = vertex[s] + graph[s][e]
-
-    for s in graph:
-        for e in graph[s]:
-            if vertex[e] > vertex[s] + graph[s][e]:
-                return -1  # 음의 사이클 존재
-
-    return 1
+def divide(root, left, right, plus):
+    if left > right or right < left:
+        return
+    print(root, end=" ")
+    temp = num[root]
+    L = temp - left
+    R = right - temp
+    if plus + L - 1 < n:
+        divide(post_order[plus + L - 1], left, temp - 1, plus)
+    if plus + L + R - 1 < n:
+        divide(post_order[plus + L + R - 1], temp + 1, right, plus + L)
 
 
-for _ in range(t):
-    graph = defaultdict(lambda: defaultdict(lambda: maxsize))
-
-    N, M, W = map(int, read().split())
-
-    for _ in range(M):
-        S, E, T = map(int, read().split())
-        if graph[S][E] > T:
-            graph[S][E] = T
-        if graph[S][E] > T:
-            graph[E][S] = T
-
-    for _ in range(W):
-        S, E, T = map(int, read().split())
-        if graph[S][E] > -T:
-            graph[S][E] = -T
-
-    result = "NO"
-    if bellman(graph) == -1:
-        result = "YES"
-    print(result)
+n = int(input())
+in_order = list(map(int, input().split()))
+post_order = list(map(int, input().split()))
+num = [0] * (n + 1)
+for i in range(n):
+    num[in_order[i]] = i
+root = post_order[-1]
+divide(root, 0, n - 1, 0)
