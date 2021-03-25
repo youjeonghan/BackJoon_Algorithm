@@ -1,27 +1,44 @@
-import sys
+def calculate(a, op, b):
+    if op == "+":
+        return a + b
+    elif op == "-":
+        return a - b
+    elif op == "*":
+        return a * b
+    else:
+        return a // b
 
-input = sys.stdin.readline
-sys.setrecursionlimit(10 ** 9)
 
-
-def divide(root, left, right, plus):
-    if left > right or right < left:
+def dfs(depth):
+    if depth == n - 1:
+        if not _min:
+            _min.append(numbers[n - 1])
+            _max.append(numbers[n - 1])
+        else:
+            _min = min(_min[0], numbers[n - 1])
+            _max = max(_max[0], numbers[n - 1])
         return
-    print(root, end=" ")
-    temp = num[root]
-    L = temp - left
-    R = right - temp
-    if plus + L - 1 < n:
-        divide(post_order[plus + L - 1], left, temp - 1, plus)
-    if plus + L + R - 1 < n:
-        divide(post_order[plus + L + R - 1], temp + 1, right, plus + L)
+
+    for i in range(4):
+        if operations[i] != 0:
+            operations[i] -= 1
+            origin = numbers[i + 1]
+            numbers[i + 1] = calculate(numbers[i], opIdx[i], numbers[i + 1])
+            dfs(depth + 1)
+            operations[i] += 1
+            numbers[i + 1] = origin
 
 
 n = int(input())
-in_order = list(map(int, input().split()))
-post_order = list(map(int, input().split()))
-num = [0] * (n + 1)
-for i in range(n):
-    num[in_order[i]] = i
-root = post_order[-1]
-divide(root, 0, n - 1, 0)
+numbers = list(map(int, input().split()))
+operations = list(map(int, input().split()))
+opIdx = ["+", "-", "*", "/"]
+_min = ["asd"]
+_max = ["aa"]
+
+dfs(0)
+print(_min, _max)
+
+# 2
+# 5 6
+# 0 0 1 0
