@@ -7,8 +7,8 @@ read = stdin.readline
 n = int(read())
 A, B, C, D = [], [], [], []
 
-dic1 = {}
-dic2 = {}
+dic1 = defaultdict(int)
+dic2 = defaultdict(int)
 for _ in range(n):
     a, b, c, d = map(int, read().split())
     A.append(a)
@@ -16,12 +16,19 @@ for _ in range(n):
     C.append(c)
     D.append(d)
 
+
+# for a, c in zip(A, C):
+#     for b, d in zip(B, D):
+#         dic1[a + b] += 1
+#         dic2[c + d] += 1
+
 result = 0
 for a in A:
     for b in B:
-        dic1[a + b] = dic1.get(a + b, 0) + 1
+        dic1[a + b] += 1
 
 for c in C:
     for d in D:
-        result += dic1.get(-(c + d), 0)
+        result += dic1[-(c + d)]
+
 print(result)
