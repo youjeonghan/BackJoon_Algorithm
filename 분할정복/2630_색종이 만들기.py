@@ -1,6 +1,10 @@
 # 실버 3레벨    색종이 만들기
 from sys import stdin
 
+zero = 0
+one = 0
+li = []
+
 
 def check(li):
     global one, zero
@@ -30,18 +34,10 @@ def split(li):
 
 N = int(stdin.readline().strip())
 
-zero = 0
-one = 0
-li = []
-
 for i in range(N):
     li.append([int(i) for i in stdin.readline().strip().split()])
-if sum(sum(li, [])) == N ** 2 or sum(sum(li, [])) == 0:
-    print(0)
-    print(0)
 
-else:
-    check(li)
+check(li)
 
-    print(zero)
-    print(one)
+print(zero)
+print(one)

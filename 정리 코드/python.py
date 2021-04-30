@@ -11,7 +11,8 @@ import sys
 ### int형 숫자들을 빠른 속도로 입력받아 list로 만들때
 import sys
 
-# li = list(map(int, sys.stdin.readline().split()))
+# li = list(map(int, sys.stdin.readline().split())) #   1 2 3 4 5
+# li = list(map(int, sys.stdin.readline().rstrip())) #   12345
 # ------------------------------------------------------------------------------------------------------------
 
 
@@ -27,6 +28,7 @@ combi = list(combinations(li, 2))  # li 원소들의 2개를 선택한 조합의
 import sys
 
 int_max = sys.maxsize
+int_max2 = float("inf")
 # ------------------------------------------------------------------------------------------------------------
 
 
