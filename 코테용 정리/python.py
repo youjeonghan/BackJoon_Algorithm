@@ -210,3 +210,19 @@ print(a + b)  # Counter({'b': 8, 'a': 5, 'c': 2})
 ### 특정 기준으로 문자열 나누기
 print("1 2 3".split(" "))  # ['1', '2', '3']
 # ------------------------------------------------------------------------------------------------------------
+
+
+### bisect(이진탐색) 사용법
+from bisect import bisect_left, bisect_right
+
+# bisect_left(literable, value) : 왼쪽 인덱스를 구하기
+# bisect_right(literable, value) : 오른쪽 인덱스를 구하기
+nums1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+nums2 = [4, 5, 5, 5, 5, 5, 5, 5, 5, 6]
+
+print(bisect_left(nums1, 5))  # 5
+print(bisect_right(nums1, 5))  # 6
+
+print(bisect_left(nums2, 5))  # 1
+print(bisect_right(nums2, 5))  # 9
+# ------------------------------------------------------------------------------------------------------------
