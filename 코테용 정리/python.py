@@ -179,3 +179,32 @@ import math
 math.lcm(A, B)
 # lcm = Least Common Multiple
 # ------------------------------------------------------------------------------------------------------------
+
+
+### Counter (카운터) 사용법
+from collections import Counter
+
+Counter("hello world")  # Counter({'l': 3, 'o': 2, 'h': 1, 'e': 1, ' ': 1, 'w': 1, 'r': 1, 'd': 1})
+Counter(["h", "e", "l", "l", "o"])  # Counter({'l': 2, 'h': 1, 'e': 1, 'o': 1})
+
+# 개수 많은 순으로 정렬 된 배열 리턴
+Counter(["h", "e", "l", "l", "o"]).most_common()  # [('l', 2), ('h', 1), ('e', 1), ('o', 1)] /
+
+# 개수 많은 순으로 정렬 된 배열에서 n개만 리턴
+Counter(["h", "e", "l", "l", "o"]).most_common(1)  # [('l', 2)]
+
+a = Counter(["a", "a", "a", "a", "a", "b", "b", "b"])  # Counter({'a': 5, 'b': 3})
+b = Counter(["b", "b", "b", "b", "b", "c", "c"])  # Counter({'b': 5, 'c': 2})
+print(a, b)
+# 교집합 (b는 2개다 있어서 작은값을 가져옴)
+print(a & b)  # Counter({'b': 3})
+# 합집합 (b는 2개다 있어서 큰값을 가져옴)
+print(a | b)  # Counter({'a': 5, 'b': 5, 'c': 2})
+
+# 덧셈 뺄셈 가능
+print(a - b)  # Counter({'a': 5})
+print(a + b)  # Counter({'b': 8, 'a': 5, 'c': 2})
+# ------------------------------------------------------------------------------------------------------------
+
+
+###

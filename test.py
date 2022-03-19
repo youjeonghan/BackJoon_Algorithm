@@ -1,1 +1,0 @@
-{"event_params" : {"$all" : ["ad_id"]}}
