@@ -226,3 +226,17 @@ print(bisect_right(nums1, 5))  # 6
 print(bisect_left(nums2, 5))  # 1
 print(bisect_right(nums2, 5))  # 9
 # ------------------------------------------------------------------------------------------------------------
+
+### 약수 빠르게 구하기
+# 시간 복잡도 : O(N^(1/2))
+def getDivisor(n):
+    result_list = []
+    for i in range(1, n ** (1 / 2) + 1):
+        result_list.append(i)
+        if i ** 2 == n:
+            result_list.append(n // i)
+    result_list.sort()
+    return result_list
+
+
+# ------------------------------------------------------------------------------------------------------------
