@@ -10,9 +10,10 @@ n, m = map(int, sys.stdin.readline().split())
 
 
 ### int형 숫자들을 빠른 속도로 입력받아 list로 만들때
-import sys
+from sys import stdin
 
-li = list(map(int, sys.stdin.readline().split()))
+read = stdin.readline
+li = list(map(int, read().split()))
 # ------------------------------------------------------------------------------------------------------------
 
 
@@ -237,6 +238,51 @@ def getDivisor(n):
             result_list.append(n // i)
     result_list.sort()
     return result_list
+
+
+# ------------------------------------------------------------------------------------------------------------
+
+### set 사용법
+a = {1, 2, 3}
+
+# 원소 추가
+a.add(4)  # {1, 2, 3, 4}
+
+# 원소 여러개 추가
+a.update({5, 6})  # {1, 2, 3, 4, 5, 6}
+a.update([5, 6])  # {1, 2, 3, 4, 5, 6}
+
+# 원소 삭제 (remove는 원소 존재 안하면 에러 / discard는 에러 안남)
+a.remove(6)  # {1, 2, 3, 4, 5}
+a.discard(5)  # {1, 2, 3, 4}
+
+a = {1, 2, 3}
+b = {3, 4, 5}
+
+print(a | b)  # 합집합 {1, 2, 3, 4, 5}
+print(a & b)  # 교집합 {3}
+print(a - b)  # 차집합 {1, 2}
+# ------------------------------------------------------------------------------------------------------------
+
+### 유니온 파인드
+parent = list(range(vertex + 1))
+
+
+def union(a, b):
+    a = find(a)
+    b = find(b)
+
+    if b < a:
+        parent[a] = b
+    else:
+        parent[b] = a
+
+
+def find(a):
+    if a == parent[a]:
+        return a
+    parent[a] = find(parent[a])  # 경로 압축
+    return parent[a]
 
 
 # ------------------------------------------------------------------------------------------------------------
