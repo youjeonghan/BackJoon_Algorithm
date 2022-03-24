@@ -29,7 +29,7 @@ def union(a, b):
 def find(a):
     if a == parent[a]:
         return a
-    parent[a] = find(parent[a])  # 경로 압축
+    parent[a] = find(parent[a])  # 경로 갱신
     return parent[a]
 
 
