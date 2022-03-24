@@ -31,3 +31,32 @@ def kmp(target, pattern):
 
 kmp(target, pattern)
 # ------------------------------------------------------------------------------------------------------------
+
+
+### 유니온 파인드
+# 최소 스패닝 트리 등에 사용
+V = 5
+parent = [i for i in range(V + 1)]
+
+
+def union(a, b):
+    a = find(a)
+    b = find(b)
+    if b < a:
+        parent[a] = b
+    else:
+        parent[b] = a
+
+
+def find(a):
+    if a == parent[a]:
+        return a
+    parent[a] = find(parent[a])  # 경로 갱신
+    return parent[a]
+
+
+union(1, 3)
+union(3, 5)
+print(parent)  # [0, 1, 2, 1, 4, 1]
+
+# ------------------------------------------------------------------------------------------------------------
