@@ -293,7 +293,7 @@ import heapq as hq
 heap = [6, 2, 5, 4, 1, 3]
 hq.heapify(heap)  # 기존의 리스트 힙으로 만드는 함수
 hq.heappush(heap, num)
-w, node = hq.heappop(heap)
+n = hq.heappop(heap)
 
 hq.heappush(heap, (-num, num))  # 최대힙처럼 사용 가능(우선 순위, 값)
 # ------------------------------------------------------------------------------------------------------------
