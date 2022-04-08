@@ -1,51 +1,32 @@
 # 골드 5레벨        숨바꼭질 3
-# 다시
-from collections import deque
-from sys import stdin
-
-read = stdin.readline
-N, K = map(int, read().split())
-li = [-1] * 200001
+# 39분 소요
 
 
-def check(start, time):
-    _set = set()
-    # print(start)
-    for i in start:
-        while i != 0 and i <= 200000:
-            # print(i)
-            if li[i] == -1:
-                li[i] = time
-                _set.add(i)
+import heapq as hq
 
-            if i > K:
-                break
-            i *= 2
-
-    return _set
+n, k = map(int, input().split())
+arr = [1 for _ in range(100001)]
+arr[n] = 0  # 들렸다
+heap = [(0, n)]
 
 
-def plus(start, time):
-    _set = check(start, time)
-    if li[K] != -1:
-        return
-    time += 1
-    start = []
-    for i in _set:
-        if i - 1 > 0 and li[i - 1] == -1:
-            li[i - 1] = time
-            start.append(i - 1)
+def bfs():
+    while heap:
+        time, v = hq.heappop(heap)
 
-        if li[i + 1] == -1:
-            li[i + 1] = time
-            start.append(i + 1)
-
-        if li[K] != -1:
+        if v == k:
+            print(time)
             return
-    if start:
-        plus(start, time)
+
+        if v * 2 <= 100000 and arr[v * 2]:
+            arr[v * 2] = 0
+            hq.heappush(heap, (time, v * 2))
+        if 0 <= v - 1 and arr[v - 1]:
+            arr[v - 1] = 0
+            hq.heappush(heap, (time + 1, v - 1))
+        if v + 1 <= 100000 and arr[v + 1]:
+            arr[v + 1] = 0
+            hq.heappush(heap, (time + 1, v + 1))
 
 
-plus([N], 0)
-# print(li[1:18])
-print(li[K])
+bfs()
